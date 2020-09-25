@@ -1,4 +1,4 @@
-package com.ayusma.textrecognition;
+package com.rashid.ocrapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.rashid.ocrapp.R;
 
 public class TextActivity extends AppCompatActivity {
     private String result, preview;

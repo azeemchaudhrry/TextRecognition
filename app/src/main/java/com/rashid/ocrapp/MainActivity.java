@@ -1,4 +1,4 @@
-package com.ayusma.textrecognition;
+package com.rashid.ocrapp;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -18,7 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ayusma.textrecognition.Adapter.RecyclerViewAdapter;
+import com.rashid.ocrapp.Adapter.RecyclerViewAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -31,7 +30,7 @@ import net.alhazmy13.mediapicker.Image.ImagePicker;
 
 import java.util.List;
 
-import static com.ayusma.textrecognition.Operation.MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE;
+import static com.rashid.ocrapp.Operation.MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE;
 
 
 public class MainActivity extends AppCompatActivity {

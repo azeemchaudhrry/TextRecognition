@@ -1,4 +1,4 @@
-package com.ayusma.textrecognition.Adapter;
+package com.rashid.ocrapp.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,10 +13,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ayusma.textrecognition.Helper.Saver;
-import com.ayusma.textrecognition.Operation;
-import com.ayusma.textrecognition.R;
-import com.ayusma.textrecognition.TextActivity;
+import com.rashid.ocrapp.Helper.Saver;
+import com.rashid.ocrapp.Operation;
+import com.rashid.ocrapp.R;
+import com.rashid.ocrapp.TextActivity;
 import com.google.android.material.card.MaterialCardView;
 
 import org.jetbrains.annotations.NotNull;

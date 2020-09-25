@@ -1,4 +1,4 @@
-package com.ayusma.textrecognition.Helper;
+package com.rashid.ocrapp.Helper;
 
 public class Saver {
 

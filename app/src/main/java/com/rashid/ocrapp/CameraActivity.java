@@ -1,4 +1,4 @@
-package com.ayusma.textrecognition;
+package com.rashid.ocrapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -18,17 +18,22 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.ayusma.textrecognition.Helper.SharedHelper;
+
+import com.rashid.ocrapp.Helper.SharedHelper;
 import com.camerakit.CameraKit;
 import com.camerakit.CameraKitView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.document.FirebaseVisionDocumentText;
 import com.google.firebase.ml.vision.document.FirebaseVisionDocumentTextRecognizer;
+import com.google.firebase.ml.vision.text.FirebaseVisionText;
+import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
 
+import com.rashid.ocrapp.R;
+
+import java.util.List;
 import java.util.Objects;
 
 public class CameraActivity extends AppCompatActivity implements View.OnClickListener {
@@ -37,6 +42,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     private String flashMode = "";
     private AlertDialog dialog;
     private Context mContext;
+    private Bitmap imageBitmap;
 
 
     @Override
@@ -175,20 +181,32 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void imageProcessor(FirebaseVisionImage image) {
-        FirebaseVisionDocumentTextRecognizer detector = FirebaseVision.getInstance()
-                .getCloudDocumentTextRecognizer();
+        //FirebaseVisionDocumentTextRecognizer detector = FirebaseVision.getInstance()
+        //        .getCloudDocumentTextRecognizer();
 
-        detector.processImage(image)
-                .addOnSuccessListener(new OnSuccessListener<FirebaseVisionDocumentText>() {
+        //FirebaseVisionImage firebaseVisionImage = FirebaseVisionImage.fromBitmap(image);
+        FirebaseVisionTextRecognizer firebaseVisionTextDetector = FirebaseVision.getInstance().getOnDeviceTextRecognizer();
+        firebaseVisionTextDetector.processImage(image)
+                .addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
                     @Override
-                    public void onSuccess(FirebaseVisionDocumentText result) {
-                        dialog.dismiss();
-                        Intent intent = new Intent(CameraActivity.this, TextActivity.class);
-                        intent.putExtra("result", result.getText());
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-                        finish();
+                    public void onSuccess(FirebaseVisionText firebaseVisionText) {
+                        List<FirebaseVisionText.TextBlock> textBlocks = firebaseVisionText.getTextBlocks();
 
+                        if(textBlocks.size() == 0){
+                            //Toast.makeText(this, "No text found in image", Toast.LENGTH_SHORT).show();
+                        } else {
+                            StringBuilder builder = new StringBuilder();
+                            for (int i = 0; i < textBlocks.size(); i++) {
+                                builder.append(textBlocks.get(i).getText());
+                            }
+                            String allText = builder.toString();
+                            dialog.dismiss();
+                            Intent intent = new Intent(CameraActivity.this, TextActivity.class);
+                            intent.putExtra("result", allText);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+                            finish();
+                        }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -208,6 +226,37 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                         }).show();
                     }
                 });
+
+//        detector.processImage(image)
+//                .addOnSuccessListener(new OnSuccessListener<FirebaseVisionDocumentText>() {
+//                    @Override
+//                    public void onSuccess(FirebaseVisionDocumentText result) {
+//                        dialog.dismiss();
+//                        Intent intent = new Intent(CameraActivity.this, TextActivity.class);
+//                        intent.putExtra("result", result.getText());
+//                        startActivity(intent);
+//                        overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+//                        finish();
+//
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        dialog.dismiss();
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+//                        builder.setTitle("Processing Failed");
+//                        builder.setMessage(e.getLocalizedMessage());
+//
+//                        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                cameraKitView.onStart();
+//                                cameraKitView.onResume();
+//                            }
+//                        }).show();
+//                    }
+//                });
 
     }
 

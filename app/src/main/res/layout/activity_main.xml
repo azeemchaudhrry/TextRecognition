@@ -15,20 +15,20 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/gallery_floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_width="75dp"
+        android:layout_height="202dp"
         android:layout_above="@id/camera_floatingActionButton"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="@dimen/fab_margin"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
         android:clickable="true"
+        android:focusable="true"
         app:backgroundTint="#FFFFFF"
         app:elevation="10dp"
         app:fabSize="normal"
         app:rippleColor="@color/colorAccent"
-        app:srcCompat="@drawable/icon_gallery"
-        android:focusable="true" />
+        app:srcCompat="@drawable/gallery" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/camera_floatingActionButton"
@@ -44,7 +44,7 @@
         app:elevation="10dp"
         app:fabSize="normal"
         app:rippleColor="@color/colorAccent"
-        app:srcCompat="@drawable/icon_camera"
+        app:srcCompat="@drawable/camera"
         android:focusable="true" />
 
     <TextView

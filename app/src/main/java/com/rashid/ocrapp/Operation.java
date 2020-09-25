@@ -1,4 +1,4 @@
-package com.ayusma.textrecognition;
+package com.rashid.ocrapp;
 
 
 import android.Manifest;
@@ -14,8 +14,9 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.ayusma.textrecognition.Helper.SQLiteDatabaseHelper;
-import com.ayusma.textrecognition.Helper.Saver;
+import com.rashid.ocrapp.Helper.SQLiteDatabaseHelper;
+import com.rashid.ocrapp.Helper.Saver;
+import com.rashid.ocrapp.R;
 
 import java.io.File;
 import java.io.FileWriter;
