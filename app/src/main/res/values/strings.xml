@@ -17,4 +17,5 @@
     <string name="export_confirmation">Are you sure you want to export this?</string>
     <string name="txt_export">Export as TXT</string>
     <string name="ok">Ok</string>
+    <string name="TextRecognition">My Application</string>
 </resources>

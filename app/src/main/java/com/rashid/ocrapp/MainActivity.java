@@ -122,6 +122,11 @@ public class MainActivity extends AppCompatActivity {
             dialog.show();
         }
     }
+    public void  launchtts(View view)
+    {
+        Intent intent=new Intent(this, Tts.class);
+        startActivity(intent);
+    }
 
     public void imageProcessor(FirebaseVisionImage image) {
         FirebaseVisionDocumentTextRecognizer detector = FirebaseVision.getInstance()
