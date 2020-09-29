@@ -127,6 +127,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(this, Tts.class);
         startActivity(intent);
     }
+    public void  launchpdf(View view)
+    {
+        Intent intent=new Intent(this, Imagetopdf.class);
+        startActivity(intent);
+    }
 
     public void imageProcessor(FirebaseVisionImage image) {
         FirebaseVisionDocumentTextRecognizer detector = FirebaseVision.getInstance()

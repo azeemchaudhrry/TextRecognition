@@ -14,6 +14,23 @@
         tools:listitem="@layout/recyclerview_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/gallery_floatingActionButton3"
+        android:layout_width="75dp"
+        android:layout_height="202dp"
+        android:layout_above="@id/camera_floatingActionButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/fab_margin"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="169dp"
+        android:focusable="true"
+        android:onClick="launchpdf"
+        app:backgroundTint="#FFFFFF"
+        app:elevation="10dp"
+        app:fabSize="normal"
+        app:rippleColor="@color/colorAccent"
+        app:srcCompat="@drawable/pdf" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/gallery_floatingActionButton2"
         android:layout_width="75dp"
         android:layout_height="202dp"
