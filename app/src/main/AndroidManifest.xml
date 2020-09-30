@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Helper.ImagePickerActivity"/>
         <activity android:name=".Imagetopdf" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".Tts" />
         <activity
@@ -29,15 +28,22 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            />
         <activity android:name=".TextActivity" />
         <activity
             android:name=".CameraActivity"
             android:screenOrientation="portrait" />
+
+        <!-- uCrop cropping activity -->
+        <activity android:name=".Helper.ImagePickerActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" /> <!-- cache directory file provider paths -->
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            /> <!-- cache directory file provider paths -->
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -46,8 +52,10 @@
 
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
+                android:resource="@xml/provider_paths" />
+
         </provider>
+        <!--..............................-->
 
     </application>
 

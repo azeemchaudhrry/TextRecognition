@@ -1,5 +1,6 @@
 package com.rashid.ocrapp;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
@@ -62,7 +63,7 @@ public class Imagetopdf extends AppCompatActivity {
     private ImageView imageView;
     private Button buttonSelectImage, buttonSavePDF;
     /*..............*/
-    private static final String TAG = Imagetopdf.class.getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
     public static final int REQUEST_IMAGE = 100;
     private Bitmap bitmap ;
 

@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(this, Imagetopdf.class);
         startActivity(intent);
     }
-
     public void imageProcessor(FirebaseVisionImage image) {
         FirebaseVisionDocumentTextRecognizer detector = FirebaseVision.getInstance()
                 .getCloudDocumentTextRecognizer();
