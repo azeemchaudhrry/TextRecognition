@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TextRecognition</string>
+    <string name="app_name">Smart Notes</string>
     <string name="copy">Copy</string>
     <string name="save">Save</string>
     <string name="share">Share</string>
@@ -17,5 +17,5 @@
     <string name="export_confirmation">Are you sure you want to export this?</string>
     <string name="txt_export">Export as TXT</string>
     <string name="ok">Ok</string>
-    <string name="TextRecognition">My Application</string>
+    <string name="TextRecognition">Smart Notes</string>
 </resources>

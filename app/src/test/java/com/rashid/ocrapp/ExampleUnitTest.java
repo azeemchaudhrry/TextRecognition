@@ -1,4 +1,4 @@
-package com.ayusma.textrecognition;
+package com.rashid.ocrapp;
 
 import org.junit.Test;
 
