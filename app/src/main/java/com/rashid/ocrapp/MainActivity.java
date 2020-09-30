@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseVisionTextDetector.processImage(image)
                 .addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
                     @Override
-                    public void onSuccess(FirebaseVisionText result) {
+                    public void onSuccess(FirebaseVisionText firebaseVisionText) {
                         dialog.dismiss();
 
                         List<FirebaseVisionText.TextBlock> textBlocks = firebaseVisionText.getTextBlocks();
