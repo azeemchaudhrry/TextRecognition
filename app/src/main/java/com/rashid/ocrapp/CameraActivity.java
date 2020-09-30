@@ -181,10 +181,6 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void imageProcessor(FirebaseVisionImage image) {
-        //FirebaseVisionDocumentTextRecognizer detector = FirebaseVision.getInstance()
-        //        .getCloudDocumentTextRecognizer();
-
-        //FirebaseVisionImage firebaseVisionImage = FirebaseVisionImage.fromBitmap(image);
         FirebaseVisionTextRecognizer firebaseVisionTextDetector = FirebaseVision.getInstance().getOnDeviceTextRecognizer();
         firebaseVisionTextDetector.processImage(image)
                 .addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
@@ -226,38 +222,6 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                         }).show();
                     }
                 });
-
-//        detector.processImage(image)
-//                .addOnSuccessListener(new OnSuccessListener<FirebaseVisionDocumentText>() {
-//                    @Override
-//                    public void onSuccess(FirebaseVisionDocumentText result) {
-//                        dialog.dismiss();
-//                        Intent intent = new Intent(CameraActivity.this, TextActivity.class);
-//                        intent.putExtra("result", result.getText());
-//                        startActivity(intent);
-//                        overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-//                        finish();
-//
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        dialog.dismiss();
-//                        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-//                        builder.setTitle("Processing Failed");
-//                        builder.setMessage(e.getLocalizedMessage());
-//
-//                        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                cameraKitView.onStart();
-//                                cameraKitView.onResume();
-//                            }
-//                        }).show();
-//                    }
-//                });
-
     }
 
     public void captureSound(){

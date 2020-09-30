@@ -133,20 +133,30 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void imageProcessor(FirebaseVisionImage image) {
-        FirebaseVisionDocumentTextRecognizer detector = FirebaseVision.getInstance()
-                .getCloudDocumentTextRecognizer();
-
-        detector.processImage(image)
-                .addOnSuccessListener(new OnSuccessListener<FirebaseVisionDocumentText>() {
+        FirebaseVisionTextRecognizer firebaseVisionTextDetector = FirebaseVision.getInstance().getOnDeviceTextRecognizer();
+        firebaseVisionTextDetector.processImage(image)
+                .addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
                     @Override
-                    public void onSuccess(FirebaseVisionDocumentText result) {
+                    public void onSuccess(FirebaseVisionText result) {
                         dialog.dismiss();
-                        Intent intent = new Intent(MainActivity.this, TextActivity.class);
-                        intent.putExtra("result", result.getText());
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-                        finish();
 
+                        List<FirebaseVisionText.TextBlock> textBlocks = firebaseVisionText.getTextBlocks();
+
+                        if(textBlocks.size() == 0){
+                            //Toast.makeText(this, "No text found in image", Toast.LENGTH_SHORT).show();
+                        } else {
+                            StringBuilder builder = new StringBuilder();
+                            for (int i = 0; i < textBlocks.size(); i++) {
+                                builder.append(textBlocks.get(i).getText());
+                            }
+                            String allText = builder.toString();
+                            dialog.dismiss();
+                            Intent intent = new Intent(MainActivity.this, TextActivity.class);
+                            intent.putExtra("result", allText);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+                            finish();
+                        }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
